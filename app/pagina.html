@@ -1,0 +1,30 @@
+<html>
+<head>
+<script>
+
+var invocation = new XMLHttpRequest();
+var url = 'http://localhost:3000/people';
+   
+function callOtherDomain() {
+  if(invocation) {    
+    invocation.open('GET', url, true);
+    invocation.onreadystatechange = function(res){
+    	if (invocation.readyState == 4){
+    		console.log(invocation.response);
+    	}
+    };
+    invocation.send(); 
+  }
+}
+
+callOtherDomain();
+
+</script>
+
+</head>
+
+
+
+<body></body>
+
+</html>

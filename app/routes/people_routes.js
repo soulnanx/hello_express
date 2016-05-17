@@ -4,8 +4,10 @@ var Person = require('../models/person');
 
 router.route('/people')
 	.get((req, res) => {
+		console.log("erro");
 		Person.find({}, (err, people) => {
 			if (err){
+
 				res.status(500).send("error");
 			} else {
 				res.status(200).send(people);

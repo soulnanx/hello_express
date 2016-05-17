@@ -6,6 +6,23 @@ mongoose.connect('mongodb://192.168.99.100/novo');
 
 
 var app = express();
+
+
+app.use(function(req, res, next) {
+
+	res
+	.header('Access-Control-Allow-Origin' , '*') 
+	.header('Access-Control-Allow-Methods' , 'POST, GET, OPTIONS, PUT, DELETE, PATCH')
+	.header('Access-Control-Allow-Headers' , 'Content-Type, Accept, Authorization');
+	
+	if(req.method === 'OPTIONS') {
+		res.sendStatus(200);
+	} else {
+		next();
+	}
+
+});
+
 app.use(bodyParser.json());
 
 app.use(peopleRouter);
