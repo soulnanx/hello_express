@@ -2,7 +2,7 @@ var express = require ("express");
 var bodyParser = require ("body-parser");
 var mongoose = require('mongoose');
 var peopleRouter = require('./app/routes/people_routes');
-mongoose.connect('mongodb://192.168.99.100/novo');
+mongoose.connect('mongodb://192.168.99.100:32769/novo');
 
 
 var app = express();
@@ -34,4 +34,8 @@ app.use(peopleRouter);
 //app.get("/people" , peopleRoutes.index);
 //app.post("/people" , peopleRouts.create);
 
-app.listen(3000);
+app.listen(3000, function(){
+	console.log('nodejs is running at port 3000');
+	console.log('mongo is running at 192.168.99.100:32769/novo');
+
+});
